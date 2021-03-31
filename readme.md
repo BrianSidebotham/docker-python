@@ -2,7 +2,7 @@
 
 Container images that provide various versions of Python with various dependencies pre-installed as quicker CI starting position.
 
-The Python installed in these images comes from the [docker-python-builder`](https://github.com/BrianSidebotham/docker-python-builder) project which builds a relocateable Python under `/opt/`.
+The Python installed in these images comes from the [docker-python-builder](https://github.com/BrianSidebotham/docker-python-builder) project which builds a relocateable Python under `/opt/`.
 
 If you want to package a Python application, including the Python binaries then this would be a great place to start.
 
