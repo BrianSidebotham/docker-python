@@ -75,9 +75,9 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
-          file: centos7/python38.dockerfile
+          file: centos7/python39.dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: 3.8
+          tags: 3.9
           labels: ${{ steps.meta.outputs.labels }}
 
       # Sign the resulting Docker image digest except on PRs.
