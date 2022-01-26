@@ -11,7 +11,7 @@ RUN yum install -y wget \
     && /opt/python310/bin/python3 -V \
     && /opt/python310/bin/pip3 install --upgrade pip wheel setuptools
 
-COPY ./entrypoint.sh /
+COPY ./centos7/entrypoint.sh /
 
 ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
 CMD [ "python3" ]
