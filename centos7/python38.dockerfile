@@ -11,7 +11,7 @@ RUN yum install -y wget \
     && /opt/python38/bin/python3 -V \
     && /opt/python38/bin/pip3 install --upgrade pip wheel setuptools
 
-COPY entrypoint.sh /
+COPY ./entrypoint.sh /
 
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD [ "python3" ]
