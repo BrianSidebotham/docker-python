@@ -11,17 +11,20 @@ If you want to package a Python application, including the Python binaries then 
 There are various version of Python available. V3.9 is the current latest version and can be run like so:
 
 ```console
-$ docker run bsidebotham/python:39-centos7 -V
-Python 3.9.2
+$ docker run ghcr.io/briansidebotham/docker-python:3.9-centos7 python3 -V
+
+Python 3.9.9
 ```
 
 Arguments can be passed because Python is the `ENTRYPOINT` for the container. If you want to have an interactive session in the container instead, simply replace the `ENTRYPOINT` with `/bin/bash` like so:
 
 ```console
-$ docker run -it --entrypoint /bin/bash bsidebotham/python:39-centos7
+$ docker run -it ghcr.io/briansidebotham/docker-python:3.9-centos7 /bin/bash
 
-container# /opt/python39/bin/python3 -V
-Python 3.9.2
+[root@5b25005b7a97 container]# python3 -V
+Python 3.9.9
+
+
 ```
 
 Only major and minor versions can be specified. The patch version automatically changes when a new version is released as these are generally security patches.
