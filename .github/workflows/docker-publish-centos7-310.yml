@@ -20,7 +20,8 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}-centos7
-
+  DOCKERFILE: centos7/python310.dockerfile
+  PYTHONVERSION: 3.10
 
 jobs:
   build:
@@ -75,9 +76,9 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
-          file: centos7/python310.dockerfile
+          file: ${{ env.DOCKERFILE }}
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/briansidebotham/docker-python:3.10-centos7
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.PYTHONVERSION }}
           labels: ${{ steps.meta.outputs.labels }}
 
       # # Sign the resulting Docker image digest except on PRs.

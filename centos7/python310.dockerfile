@@ -1,18 +1,21 @@
-FROM centos:centos7
+FROM quay.io/centos/centos:7
 
-ENV PATH="/opt/python310/bin:${PATH}"
+ENV INSTALLPATH="/opt/python310"
+ENV PATH="${INSTALLPATH}/bin:${PATH}"
+ENV PYTHONRELEASE="2022-02"
+ENV PYTHONPACKAGE="python310-3.10.2-1.el7.x86_64.rpm"
 
 WORKDIR /container
 
 RUN yum install -y wget \
-    && wget -q -O python310-3.10.1-1.el7.x86_64.rpm https://github.com/BrianSidebotham/docker-python-builder/releases/download/2021-01/python310-3.10.1-1.el7.x86_64.rpm \
-    && yum install -y python310-3.10.1-1.el7.x86_64.rpm \
-    && rm -f python310-3.10.1-1.el7.x86_64.rpm \
+    && wget -q -O ${PYTHONPACKAGE} https://github.com/BrianSidebotham/docker-python-builder/releases/download/${PYTHONRELEASE}/${PYTHONPACKAGE} \
+    && yum install -y ${PYTHONPACKAGE} \
+    && rm -f ${PYTHONPACKAGE} \
     && yum clean all \
-    && /opt/python310/bin/python3 -V \
-    && /opt/python310/bin/pip3 install --upgrade pip wheel setuptools
+    && ${INSTALLPATH}/bin/python3 -V \
+    && ${INSTALLPATH}/bin/pip3 install --upgrade pip wheel setuptools
 
-COPY ./centos7/entrypoint.sh /
+COPY ./entrypoint.sh /
 
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD [ "python3" ]
