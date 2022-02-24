@@ -7,11 +7,13 @@ ENV PYTHONPACKAGE="python310-3.10.2-1.el7.x86_64.rpm"
 
 WORKDIR /container
 
-RUN yum install -y wget \
+RUN yum install -y wget epel-release \
+    && echo "Downloading ${PYTHONPACKAGE}" \
     && wget -q -O ${PYTHONPACKAGE} https://github.com/BrianSidebotham/docker-python-builder/releases/download/${PYTHONRELEASE}/${PYTHONPACKAGE} \
     && yum install -y ${PYTHONPACKAGE} \
     && rm -f ${PYTHONPACKAGE} \
     && yum clean all \
+    && rm -rf /var/cache/yum/* \
     && ${INSTALLPATH}/bin/python3 -V \
     && ${INSTALLPATH}/bin/pip3 install --upgrade pip wheel setuptools
 
