@@ -19,7 +19,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   DOCKERFILE: centos7/python310.dockerfile
-  PYTHONVERSION: 3.10
+  PYTHONVERSION: "3.10"
 
 jobs:
   build:
