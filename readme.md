@@ -6,6 +6,8 @@ The Python installed in these images comes from the [docker-python-builder](http
 
 If you want to package a Python application, including the Python binaries then this would be a great place to start.
 
+If you're looking to just a container with a specific version of Python on, these containers are used to build another set of containers for just that purpose over at the [docker-python](https://github.com/BrianSidebotham/docker-python) project. Head over there for images you can base your application on.
+
 ## Versions
 
 There are various version of Python available. V3.10 is the current latest version and can be run like so:
