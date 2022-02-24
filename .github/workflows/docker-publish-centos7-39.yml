@@ -18,8 +18,6 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}-centos7
   DOCKERFILE: centos7/python39.dockerfile
   PYTHONVERSION: 3.9
 
@@ -35,6 +33,10 @@ jobs:
       id-token: write
 
     steps:
+      - name: PrepareReg Names
+        run: |
+          echo IMAGE_NAME=$(echo ${{ github.repository }}-centos7 | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
