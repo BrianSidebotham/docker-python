@@ -16,7 +16,7 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  OS: centos7
+  OS: centos8
 
 jobs:
   build:
